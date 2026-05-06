@@ -2,17 +2,17 @@
 	    SELECT datetime::date, user_id, user_role_name, u.server_id, server_name, joined_at
 	    FROM user_guild AS u
 	    LEFT JOIN (select * from server_full_info where season = (select max(season) from server_full_info)) using(server_id)
-	    WHERE u.server_id = '1363757805424742471'
-	        AND user_id <> '397685698326691842'
-	        AND datetime::date = (select max(datetime::date) from user_guild where server_id = '1363757805424742471')
+	    WHERE u.server_id = 'ид сервера основного'
+	        AND user_id <> 'ид бота'
+	        AND datetime::date = (select max(datetime::date) from user_guild where server_id = 'ид сервера основного')
 	        AND user_role_name <> ''
 	),
 	server2_user_id AS (
 	    SELECT datetime::date, user_id, user_role_name, u.server_id, server_name, joined_at, language as server_language, faction, clan_name
 	    FROM user_guild AS u
 	    JOIN (select * from server_full_info where season = (select max(season) from server_full_info) and faction is not null) using(server_id)
-	    WHERE u.server_id <> '1363757805424742471'
-	        AND user_id <> '397685698326691842'
+	    WHERE u.server_id <> 'ид сервера основного'
+	        AND user_id <> 'ид бота'
 	        AND datetime::date = (select max(datetime::date) from user_guild)
 	        AND user_role_name <> ''
 	),
@@ -75,6 +75,5 @@
 		and s2.user_role_name is not null
 		group by 
 	s1.datetime, s1.user_role_name,s2.user_role_name,s2.server_name,s1.joined_at,s2.joined_at,s2.faction,s2_min_voice.min_server2_datetime,s2.clan_name,s2.server_language,s1.user_id,s2.server_id,u.avatar
-	having s1.user_role_name <> 'Newbie' and s2.user_role_name not in ('Level 1 Rat')
 	ORDER BY count_common_server desc,server2_name,voice_yesterday_hour_utc,voice_last_7_days_utc,user_name
 	;
