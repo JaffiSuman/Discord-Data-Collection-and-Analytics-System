@@ -12,6 +12,30 @@
 
 ![Pipeline](img/diagram.png)
 
+**Файл .env **
+
+Для работы OSINTCord и скриптов этого проекта:
+TOKEN=токен от дискорд аккаунта 1
+TOKEN2=токен от дискорд аккаунта 2
+GUILD_ID=id серверов на котором есть дискорд аккаунт1 через запятую
+GUILD_ID2=id серверов на котором есть дискорд аккаунт2 через запятую
+
+Для работы OSINTCord:
+MODE=MEMBERS
+SPACING="	"
+DELAY=1000
+DICTIONARY="abcdefghijklmnopqrstuvwxyz0123456789_."
+DATE_FORMAT="YYYY-MM-DD"
+DATE_LOCALE=ru
+PREFETCH=true
+
+Для подключения к бд:
+DB_HOST=
+DB_PORT=
+DB_NAME=
+DB_USER=
+DB_PASSWORD=
+
 ---
 
 ## Описание работы
